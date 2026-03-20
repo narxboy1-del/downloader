@@ -1,0 +1,322 @@
+/* ── Reset & base ───────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #0f0f1a;
+  --surface: #1a1a2e;
+  --surface2: #16213e;
+  --accent: #0f3460;
+  --highlight: #e94560;
+  --text: #e0e0e0;
+  --text-dim: #8888a0;
+  --success: #00c853;
+  --warning: #ffab00;
+  --error: #ff1744;
+  --radius: 8px;
+}
+
+html {
+  font-size: 14px;
+}
+
+body {
+  width: 400px;
+  min-height: 300px;
+  max-height: 560px;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Header ─────────────────────────────────────────────────────────── */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--accent);
+}
+
+.header h1 {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.server-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--error);
+  transition: background 0.3s;
+}
+
+.server-dot.online {
+  background: var(--success);
+}
+
+/* ── Tabs ───────────────────────────────────────────────────────────── */
+.tabs {
+  display: flex;
+  background: var(--surface);
+}
+
+.tab {
+  flex: 1;
+  padding: 8px 0;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.tab:hover {
+  color: var(--text);
+}
+
+.tab.active {
+  color: var(--highlight);
+  border-bottom-color: var(--highlight);
+}
+
+/* ── Panels ─────────────────────────────────────────────────────────── */
+.panel {
+  display: none;
+  overflow-y: auto;
+  flex: 1;
+  padding: 8px 12px;
+  max-height: 380px;
+}
+
+.panel.active {
+  display: block;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.empty {
+  text-align: center;
+  padding: 32px 0;
+  color: var(--text-dim);
+  font-style: italic;
+}
+
+/* ── Media card ─────────────────────────────────────────────────────── */
+.media-card {
+  background: var(--surface2);
+  border-radius: var(--radius);
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.media-card:hover {
+  border-color: var(--accent);
+}
+
+.media-card .row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  flex-shrink: 0;
+}
+
+.badge.mp4    { background: #1b5e20; color: #a5d6a7; }
+.badge.webm   { background: #1a237e; color: #9fa8da; }
+.badge.m3u8   { background: #e65100; color: #ffcc80; }
+.badge.mpd    { background: #0d47a1; color: #90caf9; }
+.badge.audio  { background: #4a148c; color: #ce93d8; }
+.badge.unknown{ background: #37474f; color: #b0bec5; }
+
+.media-url {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  word-break: break-all;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.btn {
+  padding: 5px 14px;
+  border-radius: 4px;
+  border: none;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn-download {
+  background: var(--highlight);
+  color: #fff;
+  margin-left: auto;
+}
+
+.btn-download:hover {
+  background: #d63050;
+}
+
+.btn-download:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-analyze {
+  background: var(--accent);
+  color: #ccc;
+}
+
+/* ── Download card ──────────────────────────────────────────────────── */
+.download-card {
+  background: var(--surface2);
+  border-radius: var(--radius);
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.download-card .title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.download-card .filename {
+  font-size: 0.8rem;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 260px;
+}
+
+.status-label {
+  font-size: 0.7rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.status-label.downloading { background: #1565c0; color: #bbdefb; }
+.status-label.completed   { background: #2e7d32; color: #c8e6c9; }
+.status-label.failed      { background: #c62828; color: #ffcdd2; }
+.status-label.queued      { background: #f57f17; color: #fff9c4; }
+.status-label.cancelled   { background: #455a64; color: #cfd8dc; }
+.status-label.retrying    { background: #e65100; color: #ffe0b2; }
+
+.progress-bar-bg {
+  width: 100%;
+  height: 6px;
+  background: var(--bg);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--highlight));
+  border-radius: 3px;
+  transition: width 0.3s;
+}
+
+.download-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.7rem;
+  color: var(--text-dim);
+}
+
+.error-text {
+  font-size: 0.7rem;
+  color: var(--error);
+  word-break: break-word;
+}
+
+/* ── Footer ─────────────────────────────────────────────────────────── */
+.footer {
+  display: flex;
+  gap: 6px;
+  padding: 10px 12px;
+  background: var(--surface);
+  border-top: 1px solid var(--accent);
+}
+
+.footer input {
+  flex: 1;
+  padding: 6px 10px;
+  border: 1px solid var(--accent);
+  border-radius: 4px;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 0.8rem;
+  outline: none;
+}
+
+.footer input:focus {
+  border-color: var(--highlight);
+}
+
+.footer button {
+  padding: 6px 12px;
+  background: var(--highlight);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.footer button:hover {
+  background: #d63050;
+}
+
+/* ── Scrollbar ──────────────────────────────────────────────────────── */
+.panel::-webkit-scrollbar {
+  width: 5px;
+}
+.panel::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+.panel::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 3px;
+}

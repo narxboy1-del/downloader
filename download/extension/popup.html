@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <!-- ── Header ─────────────────────────────────────────────────── -->
+  <header class="header">
+    <h1>⚡ Media Downloader</h1>
+    <span class="server-dot" id="serverDot" title="Backend status"></span>
+  </header>
+
+  <!-- ── Tabs ───────────────────────────────────────────────────── -->
+  <nav class="tabs">
+    <button class="tab active" data-tab="detected">Detected</button>
+    <button class="tab" data-tab="downloads">Downloads</button>
+  </nav>
+
+  <!-- ── Detected panel ─────────────────────────────────────────── -->
+  <section id="panel-detected" class="panel active">
+    <div id="mediaList" class="list">
+      <p class="empty">Scanning page…</p>
+    </div>
+  </section>
+
+  <!-- ── Downloads panel ────────────────────────────────────────── -->
+  <section id="panel-downloads" class="panel">
+    <div id="downloadList" class="list">
+      <p class="empty">No active downloads</p>
+    </div>
+  </section>
+
+  <!-- ── Manual URL bar ─────────────────────────────────────────── -->
+  <footer class="footer">
+    <input type="text" id="manualUrl" placeholder="Paste a URL and press Enter…" spellcheck="false" />
+    <button id="manualBtn" title="Download">⬇</button>
+  </footer>
+
+  <script src="popup.js"></script>
+</body>
+</html>

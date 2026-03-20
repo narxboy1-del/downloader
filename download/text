@@ -1,0 +1,31 @@
+hybrid-downloader/
+├── backend/
+│   ├── requirements.txt
+│   ├── config.py
+│   ├── main.py
+│   ├── api/
+│   │   ├── __init__.py
+│   │   ├── models.py
+│   │   └── routes.py
+│   ├── core/
+│   │   ├── __init__.py
+│   │   ├── analyzer.py
+│   │   ├── router.py
+│   │   └── queue_manager.py
+│   ├── downloader/
+│   │   ├── __init__.py
+│   │   ├── base.py
+│   │   ├── ytdlp_downloader.py
+│   │   ├── aria2_downloader.py
+│   │   └── direct_downloader.py
+│   └── utils/
+│       ├── __init__.py
+│       ├── logger.py
+│       └── helpers.py
+└── extension/
+    ├── manifest.json
+    ├── background.js
+    ├── content.js
+    ├── popup.html
+    ├── popup.js
+    └── popup.css
